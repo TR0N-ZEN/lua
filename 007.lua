@@ -37,11 +37,28 @@ x = { "hello Lua users", "Lua" }
 e, s = string.find(table.unpack(x))
 print(e, s)
 
+-- functions can access variables of its enclosing functions (called "lexical scoping")
+-- expression function (x) ... end as a function constructor,
+-- just as {} is a table constructor.
+-- We call the result of such function constructors
+-- an "anonymous function"
 
+network = {
+  {name = "grauna",  IP = "210.26.30.34"},
+  {name = "arraial", IP = "210.26.30.23"},
+  {name = "lua",     IP = "210.26.23.12"},
+  {name = "derain",  IP = "210.26.23.20"},
+}
 
+-- If we want to sort the table by the field name,
+-- in alphabetical order, we just write:
 
+table.sort(network, function (a,b)
+  return (a.name < b.name)
+end)
 
-
-
+for i,v in ipairs(network) do
+  print(v.name)
+end
 
 
